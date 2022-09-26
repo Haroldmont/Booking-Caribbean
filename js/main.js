@@ -112,5 +112,5 @@ function iniciarSesion() {
   ingresarUsuario(cuenta);
 }
 
-alert("¡Te damos la bienvenida a Reservas del Caribe!");
+alert("¡Te damos la bienvenida a Booking Caribbean!");
 iniciarSesion();
