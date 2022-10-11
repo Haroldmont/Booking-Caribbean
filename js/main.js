@@ -11,35 +11,28 @@ function volver() {
   seleccionarOperacion();
 }
 
-function hacerReserva(llegada, salida, hotel) {
-  alert("¡Tu reserva se ha realizado exitosamente!");
-  console.log(
-    "Tienes una reserva en " +
-      hotel +
-      " desde el " +
-      llegada +
-      " hasta el " +
-      salida +
-      " del próximo mes"
-  );
+function hacerReserva(reserva1, hotel) {
+  alert("¡Tu reserva en " + hotel + " se ha realizado exitosamente!");
+  console.log("Datos de tu reserva:" + hotel, reserva1);
   seleccionarOperacion();
 }
 
-function seleccionarHotel(llegada, salida) {
+function seleccionarHotel(reserva1) {
   console.log("1: Caribbean Coast Hotel");
   console.log("2: Varadero Hotel");
   console.log("3: Volver");
+  console.log("===================================");
 
   let hotel = prompt("Elige un hotel:");
   switch (hotel) {
     case "1":
       console.log("Elegiste Caribbean Coast Hotel");
-      hacerReserva(llegada, salida, hotel);
+      hacerReserva(reserva1, hotel);
       break;
 
     case "2":
       console.log("Elegiste Varadero Hotel");
-      hacerReserva(llegada, salida, hotel);
+      hacerReserva(reserva1, hotel);
       break;
 
     case "3":
@@ -59,11 +52,52 @@ function seleccionarOperacion() {
   let operacion = prompt("Ingresa una opción: ");
   switch (operacion) {
     case "1":
-      let llegada = Number(prompt("Fecha de llegada: "));
-      console.log("Su fecha de llegada es el " + llegada);
-      let salida = Number(prompt("Fecha de salida: "));
-      console.log("Su fecha de salida es el " + salida);
-      seleccionarHotel(llegada, salida);
+      class Reserva {
+        constructor(destino, entrada, salida, adultos, menores, habitacion) {
+          this.destino = destino;
+          this.entrada = entrada;
+          this.salida = salida;
+          this.adultos = adultos;
+          this.menores = menores;
+          this.habitacion = habitacion;
+        }
+      }
+
+      console.log("===================================");
+      let listadoDestinos = [
+        "Punta Cana",
+        "Cancún",
+        "Los Roques",
+        "Rio de Janeiro",
+        "Isla de Margarita",
+      ];
+      console.log(listadoDestinos);
+
+      let destino = prompt("Indique destino del Caribe");
+      while (destino != listadoDestinos[0]) {
+        alert("Destino no disponible");
+        destino = prompt("Indique destino del Caribe");
+      }
+
+      let entrada = Number(prompt("Indique su fecha de entrada"));
+      let salida = Number(prompt("Indique su fecha de salida"));
+      let adultos = Number(prompt("Cantidad de adultos"));
+      let menores = Number(prompt("Cantidad de menores"));
+      let habitacion = Number(prompt("Cantidad de habitaciones"));
+
+      let reserva1 = new Reserva(
+        destino,
+        entrada,
+        salida,
+        adultos,
+        menores,
+        habitacion
+      );
+
+      console.log("===================================");
+      console.log(reserva1);
+      console.log("===================================");
+      seleccionarHotel(reserva1);
       break;
 
     case "2":
